@@ -1,0 +1,3 @@
+npm install jsonwebtoken
+npm install --save-dev concurrently live-server 
+npm install express-session   
