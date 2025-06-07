@@ -102,11 +102,10 @@ function switchToDashboard() {
     .then((data) => {
       processDashboardData(data);
       initializeCharts();
-      startDataUpdates();
     })
     .catch((error) => {
-      console.error("Error loading example_data.json:", error);
-      showAlert("ไม่สามารถโหลดข้อมูลจาก example_data.json ได้");
+      console.error("Error loading data:", error);
+      showAlert("ไม่สามารถโหลดข้อมูลได้");
     });
 }
 
@@ -204,9 +203,7 @@ function handleSignup() {
 
   fetch("http://localhost:3000/api/auth/signup", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   })
     .then((res) => {
@@ -434,10 +431,7 @@ function createKeywordChart() {
         legend: {
           position: "bottom",
           labels: {
-            font: {
-              size: 12,
-              family: "Segoe UI, sans-serif",
-            },
+            font: { size: 12, family: "Segoe UI, sans-serif" },
             usePointStyle: true,
             padding: 16,
           },
@@ -461,29 +455,6 @@ function createKeywordChart() {
 }
 
 // ===========================
-// DATA UPDATES
-// ===========================
-function startDataUpdates() {
-  setInterval(updateStats, 5000);
-}
-
-function updateStats() {
-  const stats = [
-    { id: "avgResponseTime", value: (Math.random() * 3 + 1).toFixed(1) + "s" },
-    { id: "successRate", value: (Math.random() * 2 + 97).toFixed(1) + "%" },
-  ];
-
-  stats.forEach((stat) => {
-    const el = document.getElementById(stat.id);
-    if (el) {
-      el.style.transform = "scale(1.1)";
-      el.textContent = stat.value;
-      setTimeout(() => (el.style.transform = "scale(1)"), 200);
-    }
-  });
-}
-
-// ===========================
 // UTILITY FUNCTIONS
 // ===========================
 function getChartOptions(title) {
@@ -500,9 +471,7 @@ function getChartOptions(title) {
         position: "bottom",
         labels: {
           usePointStyle: true,
-          font: {
-            size: 12,
-          },
+          font: { size: 12 },
         },
       },
       tooltip: {
@@ -517,20 +486,12 @@ function getChartOptions(title) {
     scales: {
       y: {
         beginAtZero: true,
-        ticks: {
-          color: "#718096",
-        },
-        grid: {
-          color: "#e2e8f0",
-        },
+        ticks: { color: "#718096" },
+        grid: { color: "#e2e8f0" },
       },
       x: {
-        ticks: {
-          color: "#718096",
-        },
-        grid: {
-          color: "#e2e8f0",
-        },
+        ticks: { color: "#718096" },
+        grid: { color: "#e2e8f0" },
       },
     },
     interaction: {
@@ -538,12 +499,8 @@ function getChartOptions(title) {
       mode: "index",
     },
     elements: {
-      line: {
-        borderWidth: 2,
-      },
-      point: {
-        hoverRadius: 6,
-      },
+      line: { borderWidth: 2 },
+      point: { hoverRadius: 6 },
     },
   };
 }
