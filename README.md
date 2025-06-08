@@ -3,5 +3,7 @@ npm install jsonwebtoken
 npm install --save-dev concurrently live-server 
 npm install express-session   
 
+cd ไปที่ My_test-main
+
 จากนั้น 
 npm start
