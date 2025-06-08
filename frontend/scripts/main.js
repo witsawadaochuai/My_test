@@ -34,6 +34,12 @@ const monthOrder = [
 // INITIALIZATION
 // <--------------------------->
 document.addEventListener("DOMContentLoaded", function () {
+  const token = localStorage.getItem("token");
+  if (token) {
+    switchToDashboard();
+  } else {
+    switchToLogin();
+  }
   initializeApp();
 });
 
